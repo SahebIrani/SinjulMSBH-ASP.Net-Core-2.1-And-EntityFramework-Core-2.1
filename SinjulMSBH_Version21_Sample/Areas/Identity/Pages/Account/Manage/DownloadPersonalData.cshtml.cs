@@ -1,0 +1,54 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using SinjulMSBH_Version21_Sample.Data;
+
+namespace SinjulMSBH_Version21_Sample.Areas.Identity.Pages.Account.Manage
+{
+	public class DownloadPersonalDataModel: PageModel
+	{
+		private readonly UserManager<ApplicationUser> _userManager;
+		private readonly ILogger<DownloadPersonalDataModel> _logger;
+
+		public DownloadPersonalDataModel (
+		    UserManager<ApplicationUser> userManager ,
+		    ILogger<DownloadPersonalDataModel> logger )
+
+		{
+			_userManager = userManager;
+			_logger = logger;
+		}
+
+		public async Task<IActionResult> OnPostAsync ( )
+		{
+			var user = await _userManager.GetUserAsync(User);
+
+			if ( user == null )
+			{
+				return NotFound( $"Unable to load user with ID '{_userManager.GetUserId( User )}'." );
+			}
+
+			_logger.LogInformation( "User with ID '{UserId}' asked for their personal data." , _userManager.GetUserId( User ) );
+
+			// Only include personal data for download
+			var personalData = new Dictionary<string, string>();
+			personalData.Add( "UserId" , await _userManager.GetUserIdAsync( user ) );
+			personalData.Add( "UserName" , await _userManager.GetUserNameAsync( user ) );
+			personalData.Add( "Email" , await _userManager.GetEmailAsync( user ) );
+			personalData.Add( "EmailConfirmed" , ( await _userManager.IsEmailConfirmedAsync( user ) ).ToString( ) );
+			personalData.Add( "PhoneNumber" , await _userManager.GetPhoneNumberAsync( user ) );
+			personalData.Add( "PhoneNumberConfirmed" , ( await _userManager.IsEmailConfirmedAsync( user ) ).ToString( ) );
+			personalData.Add( "IAmCustomized" , "true" );
+
+			Response.Headers.Add( "Content-Disposition" , "attachment; filename=PersonalData.json" );
+			return new FileContentResult( Encoding.UTF8.GetBytes( JsonConvert.SerializeObject( personalData ) ) , "text/json" );
+		}
+	}
+}

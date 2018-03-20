@@ -1,0 +1,64 @@
+﻿{
+      "Kestrel": {
+            "EndPoints": {
+                  "Http": {
+                        "Url": "http://localhost:5005"
+                  },
+
+                  "HttpsInlineCertFile": {
+                        "Url": "https://localhost:5006",
+                        "Certificate": {
+                              "Path": "cert.pfx",
+                              "Password": "<cert password>"
+                        }
+                  },
+
+                  "HttpsInlineCertStore": {
+                        "Url": "https://localhost:5007",
+                        "Certificate": {
+                              "Subject": "mysite",
+                              "Store": "My",
+                              "Location": "CurrentUser",
+                              "AllowInvalid": "false" // Set to true to allow invalid certificates (e.g. self-signed)
+                        }
+                  }
+            }
+      },
+      "Certificates": {
+            "Default": {
+                  "Subject": "mysite",
+                  "Store": "User",
+                  "Location": "Local",
+                  "AllowInvalid": "false", // Set to "true" to allow invalid certificates (e.g. self-signed)
+                  ///////////////////////////
+                  "Path": "cert.pfx",
+                  "Password": "<password>"
+            }
+      },
+      "iisSettings": {
+            "windowsAuthentication": false,
+            "anonymousAuthentication": true,
+            "iisExpress": {
+                  "applicationUrl": "http://localhost:34039",
+                  "sslPort": 44369
+            }
+      },
+      "profiles": {
+            "IIS Express": {
+                  "commandName": "IISExpress",
+                  "launchBrowser": true,
+                  "environmentVariables": {
+                        "ASPNETCORE_ENVIRONMENT": "Development",
+                        "ASPNETCORE_HTTPS_PORT": "44369"
+                  }
+            },
+            "SinjulMSBH_Version21_Sample": {
+                  "commandName": "Project",
+                  "launchBrowser": true,
+                  "environmentVariables": {
+                        "ASPNETCORE_ENVIRONMENT": "Development",
+                        "ASPNETCORE_URLS": "https://localhost:5001;http://localhost:5000"
+                  }
+            }
+      }
+}

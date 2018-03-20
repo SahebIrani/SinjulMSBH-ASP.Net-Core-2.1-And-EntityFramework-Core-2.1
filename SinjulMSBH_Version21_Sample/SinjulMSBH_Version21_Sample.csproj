@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp2.1</TargetFramework>
+		<UserSecretsId>aspnet-SinjulMSBH_Version21_Sample-FE757E8B-B690-423F-BC8B-D2275D6B809E</UserSecretsId>
+		<ResolvedRazorCompileToolset>RazorSdk</ResolvedRazorCompileToolset>
+		<RazorCompileOnBuild>true</RazorCompileOnBuild>
+		<IncludeContentInPack>false</IncludeContentInPack>
+		<AspNetCoreModuleHostingModel>inprocess</AspNetCoreModuleHostingModel>
+		<AllowUntrustedCertificate>True</AllowUntrustedCertificate>
+		<AssemblyName>SinjulMSBH_Version21_Sample</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!--<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="2.1.0-preview1-final" />-->
+		<!--<PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.0-preview1-final" />-->
+		<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.5-preview1" />
+		<PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.0-preview1-final" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.1.0-preview1-final" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.0-preview1-final" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.0-preview1-final" PrivateAssets="All" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.1.0-preview1-final" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.0-preview1-final" PrivateAssets="All" />
+		<PackageReference Include="Moq" Version="4.8.2" />
+		<PackageReference Include="Refit" Version="4.3.0" />
+		<PackageReference Include="xunit.assert" Version="2.4.0-beta.1.build3958" />
+		<PackageReference Include="xunit.extensibility.core" Version="2.4.0-beta.1.build3958" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.1.0-preview1-final" />
+		<DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.1.0-preview1-final" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Models\HTTPSAndHSTS\" />
+		<!--<Content Include="Pages\**\*.cshtml" />-->
+	</ItemGroup>
+</Project>

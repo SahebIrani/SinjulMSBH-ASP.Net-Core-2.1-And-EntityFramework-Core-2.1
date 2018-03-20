@@ -1,0 +1,18 @@
+﻿@page
+@model DownloadPersonalDataModel
+@*@namespace Microsoft.AspNetCore.Identity.UI.Pages.Internal*@
+@*context.Response.Cookies.Append("Test", "Value", new CookieOptions { IsEssential = false });
+      context.Response.Cookies.Append("Test", "Value", new CookieOptions { IsEssential = true });*@
+
+      //https://msdnshared.blob.core.windows.net/media/2018/02/snip_20180227145719.png
+
+@{
+      ViewData[ "Title" ] = "Download Your Data";
+      ViewData[ "ActivePage" ] = Microsoft.AspNetCore.Identity.UI.Pages.Account.Manage.Internal.ManageNavPages.DownloadPersonalData;
+}
+
+<h4>@ViewData[ "Title" ]</h4>
+
+@section Scripts {
+      <partial name="_ValidationScriptsPartial" />
+}
